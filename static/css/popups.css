@@ -1,0 +1,138 @@
+/**************************\
+  Basic Modal Styles
+\**************************/
+.drawers-group {
+	position: relative;
+	z-index: 1000;
+}
+.modal {
+	position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+	color: var(--color-light);
+  font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+	z-index: var(--z-index);
+}
+
+.modal__overlay {
+  width: 100%;
+	height: 100%;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__container {
+  background-color: var(--color-primary);
+  max-width: 500px;
+  max-height: 100vh;
+	border-radius: 8px;
+	border: 2px solid var(--color-light);
+	/* overflow: hidden; */
+}
+.modal__content {
+	padding: 28px 24px;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal__title {
+	margin-bottom: 30px;
+}
+.modal__close {
+  background: transparent;
+  border: 0;
+}
+
+.modal__header .modal__close:before { content: "\2715"; }
+
+.modal__content {
+	min-width: 370px;
+  line-height: 1.5;
+	pointer-events: all;
+}
+.modal__actions {
+	display: grid;
+	justify-content: center;
+	grid-auto-flow: column;
+	gap: 30px;
+}
+button.modal-btn, a.modal-btn, button[type="submit"].modal-btn {
+	min-height: 38px;
+	min-width: 136px;
+	color: var(--color-primary);
+	font-size: 22px;
+	font-weight: 700;
+	text-transform: uppercase;
+	background-color: var(--color-light);
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	padding: 6px 16px;
+	transition: opacity 0.4s;
+}
+button.modal-btn:hover, a.modal-btn:hover, button[type="submit"].modal-btn:hover,
+button.modal-btn:focus, a.modal-btn:focus, button[type="submit"].modal-btn:focus {
+	color: var(--color-primary);
+	background-color: var(--color-light);
+	outline: none;
+	opacity: 0.65;
+}
+
+/**************************\
+  Demo Animation Style
+\**************************/
+@keyframes mmfadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@keyframes mmfadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}
+
+@keyframes mmslideIn {
+  from { transform: translateY(15%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes mmslideOut {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10%); }
+}
+
+.micromodal-slide {
+  display: none;
+}
+
+.micromodal-slide.is-open {
+  display: block;
+}
+
+.micromodal-slide.is-open .modal__overlay {
+  animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide.is-open .modal__container {
+  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide:not(.is-open) .modal__overlay {
+  animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide:not(.is-open) .modal__container {
+  animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide:not(.drawer_modal) .modal__overlay {
+	background: transparent;
+  pointer-events: none;
+}
