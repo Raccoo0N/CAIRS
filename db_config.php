@@ -3,10 +3,9 @@
 	// DATABASE
 	//
 	define('DBHOST', "localhost"); 
-	define('DBUSER', "u309666218_cairs"); 
-	define('DBPASSWD', "c4irsP1#n");
-	define('DBNAME', "u309666218_cairs"); 
-	define('DBPREFIX', "ecLA4_");
+	define('DBUSER', "db_user"); 
+	define('DBPASSWD', "db_password");
+	define('DBNAME', "db_name"); 
 	//
 	// TABLES
 	//
